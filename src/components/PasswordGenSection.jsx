@@ -1,75 +1,65 @@
+import { useEffect, useState } from "react";
+import ToggleSwitch from "./ToggleSwitch";
+import { GenpassLogic, generateRandomString } from "./logics";
+
 const PasswordGenSection = () => {
+  const [isCheckedNumerics, setIsCheckedNumerics] = useState(true);
+  const [isCheckedAlphabets, setIsCheckedAlphabets] = useState(true);
+  const [isCheckedCharacters, setIsCheckedCharacters] = useState(true);
+  const [char, setChar] = useState(null);
+  const [generatedPass, setGeneratedPass] = useState("Click the Button");
+  const handleToggleNumerics = (checked) => {
+    setIsCheckedNumerics(checked);
+  };
+  const handleToggleAplhabets = (checked) => {
+    setIsCheckedAlphabets(checked);
+  };
+  const handleToggleCharacters = (checked) => {
+    setIsCheckedCharacters(checked);
+  };
+
+  const setCharacters = (val) => {
+    setChar(val);
+  };
+
+  const GeneratethePass = () => {
+    generateRandomString(char);
+    setGeneratedPass(generateRandomString(char));
+  };
+
+  useEffect(() => {
+    GenpassLogic(
+      setCharacters,
+      isCheckedNumerics,
+      isCheckedAlphabets,
+      isCheckedCharacters
+    );
+  }, [isCheckedCharacters, isCheckedAlphabets, isCheckedNumerics]);
+
+  // useEffect(() => {
+  //   console.log(char);
+  // }, [char]);
+
   return (
     <div className="Flex-Justify-align-center spacer-bottom">
       <div className="PassGenDiv">
         <p className="heading">Generate Password</p>
         <div>
           <div className="options">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="40"
-              height="20"
-              viewBox="0 0 40 20"
-              fill="none"
-            >
-              <rect
-                y="4"
-                width="40"
-                height="12"
-                rx="6"
-                fill="#F1B768"
-                fillOpacity="0.75"
-              />
-              <rect x="20" width="20" height="20" rx="10" fill="#EB9928" />
-            </svg>
+            <ToggleSwitch onToggle={handleToggleNumerics} />
             <p className="labeltext">Numerics</p>
           </div>
           <div className="options">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="40"
-              height="20"
-              viewBox="0 0 40 20"
-              fill="none"
-            >
-              <g clipPath="url(#clip0_2_1106)">
-                <rect y="4" width="40" height="12" rx="6" fill="#2F4858" />
-                <path
-                  d="M0 10C0 4.47715 4.47715 0 10 0C15.5228 0 20 4.47715 20 10C20 15.5228 15.5228 20 10 20C4.47715 20 0 15.5228 0 10Z"
-                  fill="#5F788A"
-                />
-              </g>
-              <defs>
-                <clipPath id="clip0_2_1106">
-                  <rect width="40" height="20" fill="white" />
-                </clipPath>
-              </defs>
-            </svg>
+            <ToggleSwitch onToggle={handleToggleAplhabets} />
             <p className="labeltext">Alphabets</p>
           </div>
           <div className="options">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="40"
-              height="20"
-              viewBox="0 0 40 20"
-              fill="none"
-            >
-              <rect
-                y="4"
-                width="40"
-                height="12"
-                rx="6"
-                fill="#F1B768"
-                fillOpacity="0.75"
-              />
-              <rect x="20" width="20" height="20" rx="10" fill="#EB9928" />
-            </svg>
+            <ToggleSwitch onToggle={handleToggleCharacters} />
             <p className="labeltext">Special Characters</p>
           </div>
         </div>
         <div className="inputDiv">
-          <p className="generatedPass">KgW5MNx!Pb6Ygr*</p>
+          <p className="generatedPass">{generatedPass}</p>
           <div className="CopyButton">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -95,7 +85,9 @@ const PasswordGenSection = () => {
             </svg>
           </div>
         </div>
-        <div className="GenerateButton">Generate</div>
+        <div className="GenerateButton" onClick={GeneratethePass}>
+          Generate
+        </div>
       </div>
     </div>
   );

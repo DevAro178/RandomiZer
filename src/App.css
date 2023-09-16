@@ -177,7 +177,7 @@ header img {
 }
 .PassGenDiv .heading {
   margin: 0;
-  margin-bottom: 3.5rem;
+  margin-bottom: 2rem;
   color: #fff;
   text-align: center;
   font-size: 2.1875rem;
@@ -212,14 +212,41 @@ header img {
   font-weight: bold;
   font-size: 1.5rem;
   margin: 0;
-  margin-right: 3.3125rem;
+  margin-right: 3.7125rem;
   height: 100%;
   display: flex;
   align-items: center;
-  justify-content: center;
-  cursor: text;
+  cursor: auto;
   user-select: text;
+  white-space: nowrap;
+  overflow-x: scroll;
+  text-overflow: ellipsis;
+  text-align: center;
+  word-wrap: break-word;
+  word-break: break-all;
+  padding: 0rem 0.25rem;
 }
+/* Scroll bar CSS */
+.PassGenDiv .inputDiv .generatedPass::-webkit-scrollbar {
+  height: 5px;
+}
+
+.PassGenDiv .inputDiv .generatedPass::-webkit-scrollbar-track {
+  background: #313d3b; /* Background color of the scrollbar track */
+  cursor: pointer;
+}
+
+.PassGenDiv .inputDiv .generatedPass::-webkit-scrollbar-thumb {
+  background: #45504e; /* Color of the scrollbar thumb */
+  border-radius: 25px;
+  cursor: pointer;
+}
+
+.PassGenDiv .inputDiv .generatedPass::-webkit-scrollbar-thumb:hover {
+  background: #2c3635; /* Color of the scrollbar thumb on hover */
+}
+
+/*  */
 .PassGenDiv .inputDiv .CopyButton {
   position: absolute;
   right: 0;
