@@ -5,13 +5,10 @@ import Lenis from "@studio-freight/lenis";
 import Header from "./components/Header";
 import HeroSection from "./components/HeroSection";
 import PasswordGenSection from "./components/PasswordGenSection";
+import SvgLine from "./components/SvgLine";
 
 function App() {
   const lenis = new Lenis();
-
-  // lenis.on("scroll", (e) => {
-  //   console.log(e);
-  // });
 
   function raf(time) {
     lenis.raf(time);
@@ -21,6 +18,7 @@ function App() {
   requestAnimationFrame(raf);
   return (
     <>
+      {/* <SvgLine lenis={lenis} /> */}
       <BackgroundImg />
       <div className="container">
         <Header />

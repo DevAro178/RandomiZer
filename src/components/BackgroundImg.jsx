@@ -1,4 +1,4 @@
-import backgroundImg from "../assets/backgroundImg.jpg";
+import backgroundImg from "../assets/backgroundImg.png";
 
 const BackgroundImg = () => {
   return (

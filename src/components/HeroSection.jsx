@@ -1,29 +1,34 @@
-import { useEffect, useState } from "react";
 import arrowRight from "../assets/arrow-right.png";
-import { StringFromArray } from "./logics";
+import SplitType from "split-type";
+import gsap from "gsap";
+import CardSection from "./CardSection";
+import { useEffect } from "react";
 
 const HeroSection = () => {
-  const [hash, setHash] = useState(
-    "KQrNhgD7p&kj8UTTU#jNHQZRGWN4evsK2XuMggc8JvqDm8y7n496MjKwp!pn38OVQWzD6$=d6YBXPJHnpO3PUC$Hz%cotcZ+=jmZB=Tq6cWfz2rwV8gM8%y#U9mXTga2#Es0NMfxw6eRJ&jQMMeOf$B@4_f13W0ffS0QFuCCYSr%4"
-  );
-
   useEffect(() => {
-    let myInterval = setInterval(() => {
-      let string = StringFromArray();
-      setHash(string);
-    }, 2000);
+    const text = new SplitType("#HeadingAnim");
 
-    return () => {
-      clearInterval(myInterval);
-    };
-  }, [hash]);
+    gsap.to("#HeadingAnim .char", {
+      y: 0,
+      stagger: 0.05,
+      delay: 1,
+      duration: 0.1,
+    });
+
+    gsap.to("#HeadingAnim", {
+      opacity: 1,
+      stagger: 0.05,
+      delay: 0.2,
+      duration: 0.1,
+    });
+  }, []);
 
   return (
     <div className="HeroSection spacer-bottom">
-      <div className="textHero">
-        <h1>
+      <div className="w50 textHero">
+        <div id="HeadingAnim">
           Secure Your Digital Footprint: Generate Strong Passwords in a Flash!
-        </h1>
+        </div>
         <p>
           Take control of your digital safety with our state-of-the-art password
           generator. Dont settle for weak and vulnerable passwords anymore. Our
@@ -38,13 +43,7 @@ const HeroSection = () => {
           Generate Password <img src={arrowRight} alt="arrowRight" />
         </button>
       </div>
-      <div className="ObjHero">
-        <div className="Sphere"></div>
-        <div className="RandomCard">
-          <div className="textLabel">Random Password:</div>
-          <div className="textRandomGen">{hash}</div>
-        </div>
-      </div>
+      <CardSection />
     </div>
   );
 };
