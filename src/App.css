@@ -33,7 +33,7 @@ body {
 .backgroundImg img {
   width: 100%;
 }
-/* .LineSvg {
+.LineSvg {
   position: fixed;
   top: 0;
   left: 0;
@@ -42,7 +42,7 @@ body {
   text-align: center;
   overflow: hidden;
   z-index: -1;
-} */
+}
 
 .container {
   max-width: 1440px;

@@ -18,7 +18,7 @@ function App() {
   requestAnimationFrame(raf);
   return (
     <>
-      {/* <SvgLine lenis={lenis} /> */}
+      <SvgLine lenis={lenis} />
       <BackgroundImg />
       <div className="container">
         <Header />
